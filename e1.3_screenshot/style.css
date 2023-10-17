@@ -188,8 +188,7 @@ img {
 
 .footer .desc {
     color: white;
-    position: absolute;
-    right: 0;
-    margin-top: 75px;
-    margin-right: 15px;
+    position: relative;
+    left: 78%;
+    top: 60%;
 } 

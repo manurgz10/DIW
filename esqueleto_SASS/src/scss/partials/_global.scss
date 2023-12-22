@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  #{$property}: $value;
+}
+@mixin animacion-imagen($property-name, $from, $to) {
+  @keyframes #{$property-name} {
+    0% {
+      filter: #{$property-name }($from);
+    }
+    50% {
+      filter: #{$property-name }(#{$to});
+    }
+    100% {
+      filter: #{$property-name }($from);
+    }
+  }
+
+  animation: #{$property-name} 3s ease-in-out;
+}
+
+p:not([class]) {
+  @include prefix(color, $default-color);
+  @include prefix(background-color, $default-background);
+}
+
+.success {
+  color: $success-color;
+  background-color: darken($success-color, 25%);
+}
+
+.warning {
+  color: $warning-color;
+  background-color: darken($warning-color, 25%);
+}
+
+.error {
+  color: $error-color;
+  background-color: darken($error-color, 25%);
+}
+p {
+  font-weight: bold;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    @if h#{$i}not([class]) {
+      color: $default-color;
+      background-color: $default-background;
+    }
+    font-size: $hfont;
+  }
+  $hfont: $hfont - 0.2em;
+}
+
+@for $red from 0 through 10 {
+  @for $green from 0 through 10 {
+    @for $blue from 0 through 10 {
+      $newRed: ($red * 10);
+      $newBlue: ($blue * 10);
+      $newGreen: ($green * 10);
+
+      $redPercentatge: ($newRed * 1%);
+      $greenPercentatge: ($newGreen * 1%);
+      $bluePercentatge: ($newBlue * 1%);
+
+      $class: "color-#{$newRed}-#{$newGreen}-#{$newBlue}";
+      $class-bg: "colorbg-#{$newRed}-#{$newGreen}-#{$newBlue}";
+
+      .#{$class} {
+        color: rgb($redPercentatge, $greenPercentatge, $bluePercentatge);
+      }
+      .#{$class-bg} {
+        background-color: rgb(
+          $redPercentatge,
+          $greenPercentatge,
+          $bluePercentatge
+        );
+      }
+    }
+  }
+}
+
+table,
+th,
+td {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+table {
+  @include prefix(width, 100%);
+}
+
+img {
+  width: 300px;
+  border-radius: 45%;
+}
+
+img.grayscale {
+  @include animacion-imagen(grayscale, 0, 100);
+}
+
+img.sepia {
+  @include animacion-imagen(sepia, 0, 100);
+}
+
+img.blur {
+  @include animacion-imagen(blur, 0px, 5px);
+}
+
+img.brightness {
+  @include animacion-imagen(brightness, 1, 0.5);
+}
+
+img.invert {
+  @include animacion-imagen(invert, 0, 0.8);
+}
+
+img.hue-rotate {
+  @include animacion-imagen(hue-rotate, 0deg, 150deg);
+}
+
+img.contrast {
+  @include animacion-imagen(contrast, 0, 2);
+}
+
+@mixin animacion-imagen($property-name, $from, $to) {
+  @keyframes #{$property-name} {
+    0% {
+      filter: #{$property-name }($from);
+    }
+    50% {
+      filter: #{$property-name }(#{$to});
+    }
+    100% {
+      filter: #{$property-name }($from);
+    }
+  }
+
+  animation: #{$property-name} infinite 3s ease;
+}

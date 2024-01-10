@@ -1,0 +1,16 @@
+@use "@material/icon-button";
+@use "@material/top-app-bar/mdc-top-app-bar";
+@use "@material/tab-bar/mdc-tab-bar";
+@use "@material/tab-scroller/mdc-tab-scroller";
+@use "@material/tab-indicator/mdc-tab-indicator";
+@use "@material/tab/mdc-tab";
+@use "@material/layout-grid/mdc-layout-grid";
+@use "@material/card";
+@use "@material/button/styles";
+@include card.core-styles;
+@import "partials/vars";
+@import "partials/header";
+@import "partials/content";
+@import "partials/footer";
+
+@import "@material/icon-button/mdc-icon-button";
